@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AWS's Application Conversion Core Guidelines</title>
+</head>
+<body>
+
+<section id="philosophy" class="guide-category-section">
+    <h1 class="guide-category-header">P: Philosophy</h1>
+
+    <section id="p1" class="guide-item-section">
+        <h2 class="guide-item-header">
+            P1. Inherit the behaviors and appearnces rather than the source code.</h3>
+        <p class="reason">
+            <strong>Reason</strong>
+            The primary aim of application conversions is to 
+            reimplement behaviors and appearances of the application
+            rather than to rewrite the legacy logics with a different 
+            programming language. 
+        </p>
+        <p class="example-good">
+            <strong>Example, good</strong>
+            Copy behaviors and appearances such as: 
+            <ul>
+                <li>how GUI screens are organized</li>
+                <li>how GUI screens and gudgets look like</li>
+                <li>how GUI gudgets respond</li>
+                <li>how printed sheets look like</li>
+                <li>how APIs available for external systems respond</li>
+            </ul>
+        </p>
+        <p class="example-bad">
+            <strong>Example, bad</strong>
+            Don't bring the dark past such as: 
+            <ul>
+                <li>how components/modules of the application are organized</li>
+                <li>how variables/classes and subroutines/methods are organized</li>
+                <li>how lines of code represent logic</li>
+            </ul>
+        </p>
+        <p class="example">
+            <strong>Example</strong>
+            It is preferable to redesign database layouts in synch with 
+            the new programming design, but you have to inherit the
+            legacy layouts when: 
+            <ul>
+                <li>other systems access the database</li>
+                <li>data migration is going to cost you</li>
+            </ul>
+            If the legacy layouts must be brought to the new application, 
+            you might want to 
+            <ul>
+                <li>design new layouts anyway, then</li>
+                <li>implement a wrapper layer to absorb the differences
+                    between the legacy layouts and new one.</li>
+            </ul>
+        </p>
+    </section>
+
+    <section id="p2" class="guide-item-section">
+        <h2 class="duige-item-header">
+            P2: At the very beginning, specify behaviors and appearances 
+            of the target application.</h3>
+        <p class="reason">
+            <strong>Reason</strong>
+            Without a comprehensive understanding of 
+            behaviors and appearances of the target application, 
+            you cannot copy them into the new application.
+        </p>
+        <p class="example-good">
+            <strong>Example, good</strong>
+            Start a conversion project 
+            by preparing a compreheinsive set of testcases to 
+            fully specify behaviors and appearances of the target application. 
+            Advantages of having such testcases include: 
+            <ul>
+                <li>the Test Driven Development can be employed</li>
+                <li>you don't have to write detail design documents
+                    (only if stakeholders agree)</li>
+                <li>the testcases can be used in the test phase
+                    to prove that the new application behave as 
+                    the same way as the legacy one. 
+                </li>
+            </ul>
+            Note that some design documents are required to write 
+            including but not restricted to 
+            <ul>
+                <li>GUI screen hierarchy diagrams</li>
+                <li>component diagrams</li>
+                <li>datastore layouts</li>
+            </ul>
+        </p>
+        <p class="example">
+            <strong>Example</strong>
+            There might exist some specification documents of the target application. 
+            However, many long-lived applications have been modified and enhanced 
+            without updating its specification documents accordingly, so that 
+            documents (even if any) cannot be fully trusted. 
+            Thus, you will end up with conducting some level of expemental operations  
+            with the application to know behaviors and appearances of the application. 
+            Why not leave the experiments in documents as testcases? 
+        </p>
+        <p class="example">
+            <strong>Example</strong>
+            Some projects may manually analyse source code files of the target 
+            application to specify its behaviors and appearances in documents. 
+            However, many long-lived applications are likely to be all patchwork 
+            due to fixing bugs by commenting out old lines and 
+            squeezing new functionalities between lines. 
+            Thus, you may find it hard to understand the target application 
+            only by reading through its source code, and may have to 
+            conduct some level of expemental operations to see how the 
+            application behaves. 
+            Why not leave the experiments in documents as testcases? 
+        </p>
+    </section>
+</section>
+
+</body>
+</html>
